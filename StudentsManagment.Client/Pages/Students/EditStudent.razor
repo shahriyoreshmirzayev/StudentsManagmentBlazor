@@ -1,170 +1,170 @@
-﻿@page "/student/edit/{id:int}"
+﻿@* @page "/student/edit/{id:int}" *@
 
-@using StudentsManagment.Shared.Models
-@using StudentsManagment.Shared.StudentRepository
-@inject NavigationManager navigation
-@inject IJSRuntime jSRuntime
-@inject IStudentRepository StudentService;
-@inject ICountryRepository CountryService;
-@inject ISystemCodeDetailRepository SystemCodeDetailService;
-@rendermode InteractiveServer
+@* @using StudentsManagment.Shared.Models *@
+@* @using StudentsManagment.Shared.StudentRepository *@
+@* @inject NavigationManager navigation *@
+@* @inject IJSRuntime jSRuntime *@
+@* @inject IStudentRepository StudentService; *@
+@* @inject ICountryRepository CountryService; *@
+@* @inject ISystemCodeDetailRepository SystemCodeDetailService; *@
+@* @rendermode InteractiveServer *@
 
-<h3>Update Student Details</h3>
+@* <h3>Update Student Details</h3> *@
 
-<hr />
-<div class="row">
-    <div class="col-md-12">
-        <EditForm Model="studobj" OnValidSubmit="UpdateStudent" FormName="updatestudent">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-            <div class="col-md-12">
+@* <hr /> *@
+@* <div class="row"> *@
+@*     <div class="col-md-12"> *@
+@*         <EditForm Model="studobj" OnValidSubmit="UpdateStudent" FormName="updatestudent"> *@
+@*             <DataAnnotationsValidator /> *@
+@*             <ValidationSummary /> *@
+@*             <div class="col-md-12"> *@
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Registration No</label>
-                        <InputText for="RegistrationNo" class="form-control" @bind-Value="@studobj.RegistrationNo" />
-                        <ValidationMessage For="()=>studobj.RegistrationNo" />
-                    </div>
-                </div>
+@*                 <div class="col-md-6"> *@
+@*                     <div class="form-group"> *@
+@*                         <label class="control-label">Registration No</label> *@
+@*                         <InputText for="RegistrationNo" class="form-control" @bind-Value="@studobj.RegistrationNo" /> *@
+@*                         <ValidationMessage For="()=>studobj.RegistrationNo" /> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">First Name</label>
-                            <InputText for="FirstName" class="form-control" @bind-Value="studobj.FirstName" />
-                            <ValidationMessage For="() => studobj.FirstName" />
-                        </div>
-                    </div>
-                </div>
+@*                 <div class="row"> *@
+@*                     <div class="col-md-6"> *@
+@*                         <div class="form-group"> *@
+@*                             <label class="control-label">First Name</label> *@
+@*                             <InputText for="FirstName" class="form-control" @bind-Value="studobj.FirstName" /> *@
+@*                             <ValidationMessage For="() => studobj.FirstName" /> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Middle Name</label>
-                            <InputText for="MiddleName" class="form-control" @bind-Value="studobj.MiddleName" />
-                            <ValidationMessage For="() => studobj.MiddleName" />
-                        </div>
-                    </div>
-                </div>
+@*                 <div class="row"> *@
+@*                     <div class="col-md-6"> *@
+@*                         <div class="form-group"> *@
+@*                             <label class="control-label">Middle Name</label> *@
+@*                             <InputText for="MiddleName" class="form-control" @bind-Value="studobj.MiddleName" /> *@
+@*                             <ValidationMessage For="() => studobj.MiddleName" /> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Last Name</label>
-                            <InputText for="LastName" class="form-control" @bind-Value="studobj.LastName" />
-                            <ValidationMessage For="() => studobj.LastName" />
-                        </div>
-                    </div>
-                </div>
+@*                 <div class="row"> *@
+@*                     <div class="col-md-6"> *@
+@*                         <div class="form-group"> *@
+@*                             <label class="control-label">Last Name</label> *@
+@*                             <InputText for="LastName" class="form-control" @bind-Value="studobj.LastName" /> *@
+@*                             <ValidationMessage For="() => studobj.LastName" /> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Enail Address</label>
-                            <InputText for="EmailAddress" class="form-control" @bind-Value="studobj.EmailAddress" />
-                            <ValidationMessage For="() => studobj.EmailAddress" />
-                        </div>
-                    </div>
-                </div>
+@*                 <div class="row"> *@
+@*                     <div class="col-md-6"> *@
+@*                         <div class="form-group"> *@
+@*                             <label class="control-label">Enail Address</label> *@
+@*                             <InputText for="EmailAddress" class="form-control" @bind-Value="studobj.EmailAddress" /> *@
+@*                             <ValidationMessage For="() => studobj.EmailAddress" /> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Student Address</label>
-                            <InputText for="Address" class="form-control" @bind-Value="studobj.Address" />
-                            <ValidationMessage For="() => studobj.Address" />
-                        </div>
-                    </div>
-                </div>
+@*                 <div class="row"> *@
+@*                     <div class="col-md-6"> *@
+@*                         <div class="form-group"> *@
+@*                             <label class="control-label">Student Address</label> *@
+@*                             <InputText for="Address" class="form-control" @bind-Value="studobj.Address" /> *@
+@*                             <ValidationMessage For="() => studobj.Address" /> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Phone Number</label>
-                            <InputText for="PhoneNumber" class="form-control" @bind-Value="studobj.PhoneNumber" />
-                            <ValidationMessage For="() => studobj.PhoneNumber" />
-                        </div>
-                    </div>
-                </div>
+@*                 <div class="row"> *@
+@*                     <div class="col-md-6"> *@
+@*                         <div class="form-group"> *@
+@*                             <label class="control-label">Phone Number</label> *@
+@*                             <InputText for="PhoneNumber" class="form-control" @bind-Value="studobj.PhoneNumber" /> *@
+@*                             <ValidationMessage For="() => studobj.PhoneNumber" /> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Country</label>
-                            <InputSelect for="Country" class="form-control" @bind-Value="studobj.Country">
-                                <option value="">Select Country</option>
-                                @foreach (var country in Countries)
-                                {
-                                    <option value="@country.Name">@country.Name</option>
-                                }
-                            </InputSelect>
-                            <ValidationMessage For="() => studobj.CountryId" />
-                        </div>
-                    </div>
-                </div>
+@*                 <div class="row"> *@
+@*                     <div class="col-md-6"> *@
+@*                         <div class="form-group"> *@
+@*                             <label class="control-label">Country</label> *@
+@*                             <InputSelect for="Country" class="form-control" @bind-Value="studobj.Country"> *@
+@*                                 <option value="">Select Country</option> *@
+@*                                 @foreach (var country in Countries) *@
+@*                                 { *@
+@*                                     <option value="@country.Name">@country.Name</option> *@
+@*                                 } *@
+@*                             </InputSelect> *@
+@*                             <ValidationMessage For="() => studobj.CountryId" /> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Gender</label>
-                        <InputSelect for="GenderId" class="form-control" @bind-Value="@studobj.GenderId">
-                            <option value="">Select Gender</option>
-                            @if (Gender != null && Gender.Any())
-                            {
-                                @foreach (var sex in Gender)
-                                {
-                                    <option value="@sex.Id">@sex.Description</option>
-                                }
-                            }
-                        </InputSelect>
-                        <ValidationMessage For="()=>studobj.GenderId" />
-                    </div>
-                </div>
+@*                 <div class="col-md-6"> *@
+@*                     <div class="form-group"> *@
+@*                         <label class="control-label">Gender</label> *@
+@*                         <InputSelect for="GenderId" class="form-control" @bind-Value="@studobj.GenderId"> *@
+@*                             <option value="">Select Gender</option> *@
+@*                             @if (Gender != null && Gender.Any()) *@
+@*                             { *@
+@*                                 @foreach (var sex in Gender) *@
+@*                                 { *@
+@*                                     <option value="@sex.Id">@sex.Description</option> *@
+@*                                 } *@
+@*                             } *@
+@*                         </InputSelect> *@
+@*                         <ValidationMessage For="()=>studobj.GenderId" /> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Date of Birth</label>
-                        <InputDate for="DOB" class="form-control" @bind-Value="@studobj.DOB" />
-                        <ValidationMessage For="()=>studobj.DOB" />
-                    </div>
-                </div>
+@*                 <div class="col-md-6"> *@
+@*                     <div class="form-group"> *@
+@*                         <label class="control-label">Date of Birth</label> *@
+@*                         <InputDate for="DOB" class="form-control" @bind-Value="@studobj.DOB" /> *@
+@*                         <ValidationMessage For="()=>studobj.DOB" /> *@
+@*                     </div> *@
+@*                 </div> *@
 
-                <div class="form-group mt-4">
-                    <button type="submit" class="btn btn-primary">Save Student</button>
-                    <button type="button" @onclick="()=>Cancel()" class="btn btn-danger">Back To List</button>
-                </div>
-            </div>
-        </EditForm>
-    </div>
-</div>
+@*                 <div class="form-group mt-4"> *@
+@*                     <button type="submit" class="btn btn-primary">Save Student</button> *@
+@*                     <button type="button" @onclick="()=>Cancel()" class="btn btn-danger">Back To List</button> *@
+@*                 </div> *@
+@*             </div> *@
+@*         </EditForm> *@
+@*     </div> *@
+@* </div> *@
 
-@code {
-    [SupplyParameterFromForm]
-    public Student studobj { get; set; } = new();
-    public List<Country> Countries { get; set; } = new();
-    List<SystemCodeDetail> Gender = new List<SystemCodeDetail>();
-    [Parameter]
-    public int id { get; set; }
+@* @code { *@
+@*     [SupplyParameterFromForm] *@
+@*     public Student studobj { get; set; } = new(); *@
+@*     public List<Country> Countries { get; set; } = new(); *@
+@*     List<SystemCodeDetail> Gender = new List<SystemCodeDetail>(); *@
+@*     [Parameter] *@
+@*     public int id { get; set; } *@
 
-    protected override async Task OnInitializedAsync()
-    {
-        Countries = await CountryService.GetAllAsync();
-        Gender = await SystemCodeDetailService.GetByCodeAsync("Gender");
-        await LoadStudent();
-    }
+@*     protected override async Task OnInitializedAsync() *@
+@*     { *@
+@*         Countries = await CountryService.GetAllAsync(); *@
+@*         Gender = await SystemCodeDetailService.GetByCodeAsync("Gender"); *@
+@*         await LoadStudent(); *@
+@*     } *@
 
-    public async Task LoadStudent()
-    {
-        studobj = await StudentService.GetStudentByIdAsync(id);
-    }
-    protected async Task UpdateStudent()
-    {
-        var result = await StudentService.UpdateStudentAsync(studobj);
-        // Countries = await CountryService.GetAllAsync();
+@*     public async Task LoadStudent() *@
+@*     { *@
+@*         studobj = await StudentService.GetStudentByIdAsync(id); *@
+@*     } *@
+@*     protected async Task UpdateStudent() *@
+@*     { *@
+@*         var result = await StudentService.UpdateStudentAsync(studobj); *@
+@*         // Countries = await CountryService.GetAllAsync(); *@
 
-        navigation.NavigateTo("/students-list");
-    }
-    public void Cancel()
-    {
-        navigation.NavigateTo("/students-list");
-    }
-}
+@*         navigation.NavigateTo("/students-list"); *@
+@*     } *@
+@*     public void Cancel() *@
+@*     { *@
+@*         navigation.NavigateTo("/students-list"); *@
+@*     } *@
+@* } *@
