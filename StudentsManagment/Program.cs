@@ -1,7 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using StudentsManagment.Components;
 using StudentsManagment.Components.Account;
 using StudentsManagment.Data;
@@ -44,6 +44,27 @@ builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped(http => new HttpClient
 {
     BaseAddress = new Uri(builder.Configuration.GetSection("BaseAddress").Value!)
+});
+
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+    options.Secure = CookieSecurePolicy.Always;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    //options.Cookie.HttpOnly = true;
+    //options.Cookie.IsEssential = true;
+    //options.LoginPath = "/Account/Login";
+    //options.LogoutPath = "/Account/Logout";
+    //options.AccessDeniedPath = "/Account/AccessDenied";
+});
+builder.Services.Configure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme, options =>
+{
+    options.Cookie.SameSite = SameSiteMode.None;
 });
 
 
