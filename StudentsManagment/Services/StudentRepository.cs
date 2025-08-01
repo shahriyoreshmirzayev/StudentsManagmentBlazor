@@ -3,62 +3,61 @@ using StudentsManagment.Data;
 using StudentsManagment.Shared.Models;
 using StudentsManagment.Shared.StudentRepository;
 
-namespace StudentsManagment.Services
+namespace StudentsManagment.Services;
+
+public class StudentRepository : IStudentRepository
 {
-    public class StudentRepository : IStudentRepository
+    private readonly ApplicationDbContext _context;
+
+    public StudentRepository(ApplicationDbContext context)
     {
-        private readonly ApplicationDbContext _context;
+        this._context = context;
+    }
+    public async Task<Student> AddStudentAsync(Student student)
+    {
+        if (student == null) return null;
 
-        public StudentRepository(ApplicationDbContext context)
-        {
-            this._context = context;
-        }
-        public async Task<Student> AddStudentAsync(Student student)
-        {
-            if (student == null) return null;
+        var newstudent = _context.Students.Add(student).Entity;
+        await _context.SaveChangesAsync();
 
-            var newstudent = _context.Students.Add(student).Entity;
-            await _context.SaveChangesAsync();
+        return newstudent;
+    }
 
-            return newstudent;
-        }
+    public async Task<Student> DeleteStudentAsync(int studentId)
+    {
+        var student = await _context.Students.Where(x => x.Id == studentId).FirstOrDefaultAsync();
+        if (student == null) return null;
 
-        public async Task<Student> DeleteStudentAsync(int studentId)
-        {
-            var student = await _context.Students.Where(x => x.Id == studentId).FirstOrDefaultAsync();
-            if (student == null) return null;
+        _context.Students.Remove(student);
+        await _context.SaveChangesAsync();
 
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
-
-            return student;
-        }
+        return student;
+    }
 
 
-        public async Task<List<Student>> GetAllStudentsAsync()
-        {
-            var students = await _context.Students.Include(x => x.Country).ToListAsync();
+    public async Task<List<Student>> GetAllStudentsAsync()
+    {
+        var students = await _context.Students.Include(x => x.Country).ToListAsync();
 
-            return students;
-        }
+        return students;
+    }
 
-        public async Task<Student> GetStudentByIdAsync(int studentId)
-        {
-            var singlestudent = await _context.Students.Where(x => x.Id == studentId).FirstOrDefaultAsync();
-            if (singlestudent == null) return null;
+    public async Task<Student> GetStudentByIdAsync(int studentId)
+    {
+        var singlestudent = await _context.Students.Where(x => x.Id == studentId).FirstOrDefaultAsync();
+        if (singlestudent == null) return null;
 
-            return singlestudent;
-        }
+        return singlestudent;
+    }
 
-        public async Task<Student> UpdateStudentAsync(Student student)
-        {
-            if (student == null) return null;
+    public async Task<Student> UpdateStudentAsync(Student student)
+    {
+        if (student == null) return null;
 
 
-            var newstudent = _context.Students.Update(student).Entity;
-            await _context.SaveChangesAsync();
+        var newstudent = _context.Students.Update(student).Entity;
+        await _context.SaveChangesAsync();
 
-            return newstudent;
-        }
+        return newstudent;
     }
 }

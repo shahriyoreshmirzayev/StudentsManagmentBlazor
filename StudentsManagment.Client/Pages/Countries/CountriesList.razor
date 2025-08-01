@@ -1,5 +1,9 @@
 ﻿@page "/countries-list"
 @using StudentsManagment.Shared.Models
+@using StudentsManagment.Shared;
+@using StudentsManagment.Shared.Services;
+@inject ICountryService CountryService;
+@inject ISystemCodeDetailService SystemCodeDetailService;
 @inject NavigationManager navigation;
 @inject IJSRuntime JsRuntime
 <div class="row">
@@ -73,12 +77,12 @@
     }
     public async Task LoadAllCountries()
     {
-        // var countries = await CountryService.GetAllAsync();
+        var countries = await CountryService.GetAllAsync();
 
-        // if (countries is null) return;
+        if (countries is null) return;
 
-        // AllCountries.Clear();
+        AllCountries.Clear();
 
-        // AllCountries.AddRange(countries);
+        AllCountries.AddRange(countries);
     }
 }

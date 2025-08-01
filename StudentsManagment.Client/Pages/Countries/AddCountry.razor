@@ -1,5 +1,7 @@
 ﻿@page "/add-country"
+@using StudentsManagment.Client.Services
 @using StudentsManagment.Shared.Models
+@inject IJSRuntime jSRuntime;
 @inject NavigationManager navigation;
 
 <div class="row">
@@ -45,8 +47,8 @@
 
     protected async Task CreateCountry()
     {
-        // var result = CountryService.AddAsync(countryobj);
-        // navigation.NavigateTo("/countries-list");
+        var result = await CountryService.AddAsync(countryobj);
+        navigation.NavigateTo("/countries-list");
     }
     public void Cancel()
     {

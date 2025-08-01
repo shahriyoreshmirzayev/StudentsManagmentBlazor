@@ -13,8 +13,7 @@ namespace StudentsManagment.Controllers
         public StudentController(IStudentRepository studentRepository)
         {
             this._studentRepository = studentRepository;
-        }
-
+        }       
 
         [HttpGet("All-Students")]
         public async Task<ActionResult<List<Student>>> GetAllStudentsAsync()
@@ -22,7 +21,6 @@ namespace StudentsManagment.Controllers
             var students = await _studentRepository.GetAllStudentsAsync();
             return Ok(students);
         }
-
 
         [HttpGet("Single-Student/{id}")]
         public async Task<ActionResult<Student>> GetSingleStudentAsync(int id)
